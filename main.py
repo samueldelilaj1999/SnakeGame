@@ -5,3 +5,4 @@ gameplay = Gameplay(5000, (random.randint(0,250),random.randint(0,250),random.ra
 
 
 
+#FILLIM I RI!
