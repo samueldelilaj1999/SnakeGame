@@ -15,6 +15,11 @@ class Gameplay():
     gameon=True
     gameover=False
     score=0
+    
+    with open("highscore.txt") as file:
+        highscore=int(file.read())
+
+
     pygame.font.init()
     myfont = pygame.font.SysFont('Comic Sans MS', 60)
     myfont1 = pygame.font.SysFont('Comic Sans MS', 20)
@@ -77,6 +82,13 @@ class Gameplay():
                 self.screen.blit(textsurface, (120,250))
             textsurface1 = self.myfont1.render(f"Score:{self.score}", False, (0, 0, 0))
             self.screen.blit(textsurface1, (10, 10))
+            if self.score>=self.highscore:
+                self.highscore=self.score
+                with open("highscore.txt",mode="w") as file:
+                    file.write(str(self.highscore))
+
+            textsurface12 = self.myfont1.render(f"HighScore:{self.highscore}", False, (0, 0, 0))
+            self.screen.blit(textsurface12, (100, 10))
             timedelay=int((10000-self.snakespeed)/30)
             pygame.display.flip()
             pygame.time.delay(timedelay)
